@@ -31,5 +31,5 @@
     Di sini, `<APP_NAME>` ditulis sebagai `arto_moro`.
     - Selanjutnya, jalankan proyek melalui Terminal atau Command Prompt dengan me-run `flutter run`.
     <hr>
-- [ ] Membuat tiga tombol sederhana dengan ikon dan teks untuk:
-    - [ ] Melihat daftar item (`Lihat Item`)
+- [x] Membuat tiga tombol sederhana dengan ikon dan teks untuk:
+    - [x] Melihat daftar item (`Lihat Item`)
