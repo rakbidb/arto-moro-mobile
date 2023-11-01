@@ -21,7 +21,7 @@
 ## 3. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)
 ### Jawaban: 
 ### Berikut adalah cara mengimplementasikan semua checklist pada Tugas 6.
-- [ ] Membuat sebuah program Flutter baru dengan tema <em>inventory</em> seperti tugas-tugas sebelumnya. <br>
+- [x] Membuat sebuah program Flutter baru dengan tema <em>inventory</em> seperti tugas-tugas sebelumnya. <br>
     - Masuk ke tempat direktori untuk menyimpan proyek <em>flutter</em>-mu.
     - Lalu, <em>generate</em> proyek Flutter baru dengan nama <strong>arto_moro</strong>. Kemudian, masuk ke dalam direktori proyek tersebut dengan cara: 
     ```
