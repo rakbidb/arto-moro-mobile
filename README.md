@@ -7,7 +7,8 @@
 
 ## 1. Apa perbedaan utama antara <em>stateless</em> dengan <em>stateful widget</em> dalam konteks pengembangan aplikasi Flutter?
 ### Jawaban: 
-blablabliablsblbabliu
+- <b><em>Stateless Widget</em></b>
+    - 
 
 <hr>
 
@@ -28,4 +29,7 @@ blablabliablsblbabliu
     cd <APP_NAME>
     ```
     Di sini, `<APP_NAME>` ditulis sebagai `arto_moro`.
+    - Selanjutnya, jalankan proyek melalui Terminal atau Command Prompt dengan me-run `flutter run`.
     <hr>
+- [ ] Membuat tiga tombol sederhana dengan ikon dan teks untuk:
+    - [ ] Melihat daftar item (`Lihat Item`)
