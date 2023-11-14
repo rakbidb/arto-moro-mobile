@@ -19,9 +19,9 @@ class _ShopFormPageState extends State<ShopFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Form Tambah Item'),
+        title: const Text('Form Tambah Produk'),
         backgroundColor: Colors.grey[800],
         foregroundColor: Colors.white,
       ),
@@ -42,8 +42,8 @@ class _ShopFormPageState extends State<ShopFormPage> {
                         decoration: InputDecoration(
                           labelStyle: const TextStyle(
                               color: Color.fromRGBO(189, 189, 189, 1)),
-                          hintText: "Nama Item",
-                          labelText: "Nama Item",
+                          hintText: "Nama Produk",
+                          labelText: "Nama Produk",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           ),
@@ -68,8 +68,8 @@ class _ShopFormPageState extends State<ShopFormPage> {
                         decoration: InputDecoration(
                           labelStyle: const TextStyle(
                               color: Color.fromRGBO(189, 189, 189, 1)),
-                          hintText: "Harga Item",
-                          labelText: "Harga Item",
+                          hintText: "Harga Produk",
+                          labelText: "Harga Produk",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           ),
@@ -97,8 +97,8 @@ class _ShopFormPageState extends State<ShopFormPage> {
                         decoration: InputDecoration(
                           labelStyle: const TextStyle(
                               color: Color.fromRGBO(189, 189, 189, 1)),
-                          hintText: "Jumlah Item",
-                          labelText: "Jumlah Item",
+                          hintText: "Jumlah Produk",
+                          labelText: "Jumlah Produk",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           ),
@@ -127,8 +127,8 @@ class _ShopFormPageState extends State<ShopFormPage> {
                         decoration: InputDecoration(
                           labelStyle: const TextStyle(
                               color: Color.fromRGBO(189, 189, 189, 1)),
-                          hintText: "Deskripsi Item",
-                          labelText: "Deskripsi Item",
+                          hintText: "Deskripsi Produk",
+                          labelText: "Deskripsi Produk",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           ),
@@ -170,7 +170,7 @@ class _ShopFormPageState extends State<ShopFormPage> {
                                   return AlertDialog(
                                     backgroundColor: Colors.grey[400],
                                     title:
-                                        const Text('Item Berhasil Tersimpan'),
+                                        const Text('Produk Berhasil Tersimpan'),
                                     content: SingleChildScrollView(
                                       child: Column(
                                         crossAxisAlignment:

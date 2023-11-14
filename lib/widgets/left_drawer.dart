@@ -9,7 +9,7 @@ class LeftDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       child: ListView(
         children: [
           const DrawerHeader(
@@ -20,7 +20,7 @@ class LeftDrawer extends StatelessWidget {
             child: Column(
               children: [
                 Text(
-                  'Vending Machine',
+                  'Arto Moro',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
@@ -29,7 +29,7 @@ class LeftDrawer extends StatelessWidget {
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(10)),
-                Text("Catat dan/atau lihat seluruh item pada Vending Machine kamu di sini!",
+                Text("Catat dan/atau lihat seluruh produk pada Arto Moro kamu di sini!",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -63,7 +63,7 @@ class LeftDrawer extends StatelessWidget {
               color: Colors.white,
             ),
             title: const Text(
-              'Lihat Item',
+              'Lihat Produk',
               style: TextStyle(color: Colors.white),
             ),
             // Bagian redirection ke ShopListPage
@@ -81,7 +81,7 @@ class LeftDrawer extends StatelessWidget {
               color: Colors.white,
             ),
             title: const Text(
-              'Tambah Item',
+              'Tambah Produk',
               style: TextStyle(color: Colors.white),
             ),
             // Bagian redirection ke ShopFormPage

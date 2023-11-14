@@ -24,13 +24,13 @@ class ShopCard extends StatelessWidget {
         // Area responsive terhadap sentuhan
         // Navigate ke route yang sesuai (tergantung jenis tombol)
         onTap: () {
-          if (item.name == "Lihat Item") {
+          if (item.name == "Lihat Produk") {
             Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const ShopListPage(),
                 ));
-          } else if (item.name == "Tambah Item") {
+          } else if (item.name == "Tambah Produk") {
             Navigator.push(
                 context,
                 MaterialPageRoute(

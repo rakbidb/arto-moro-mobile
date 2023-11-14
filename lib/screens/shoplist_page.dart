@@ -9,9 +9,9 @@ class ShopListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Vending Machine'),
+        title: const Text('Arto Moro'),
         backgroundColor: Colors.grey[800],
         foregroundColor: Colors.white,
       ),
@@ -33,7 +33,7 @@ class ShopListPage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
               ),
