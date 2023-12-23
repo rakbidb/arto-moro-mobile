@@ -1,48 +1,72 @@
-import 'package:intl/intl.dart';
+// To parse this JSON data, do
+//
+//     final item = itemFromJson(jsonString);
+
+import 'dart:convert';
+
+List<Item> itemFromJson(String str) =>
+    List<Item>.from(json.decode(str).map((x) => Item.fromJson(x)));
+
+String itemToJson(List<Item> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Item {
-  Item(
-      {required this.name,
-      required this.price,
-      required this.amount,
-      required this.description,
-      this.id});
+  String model;
+  int pk;
+  Fields fields;
 
-  // Dummy Data
-  // static List<Item> list = [
-  //   Item(
-  //       name: "first item",
-  //       price: 10000,
-  //       amount: 10,
-  //       description: "lorem lorem lorem lorem lorem"),
-  //   Item(
-  //       name: "second item",
-  //       price: 20000,
-  //       amount: 20,
-  //       description: "lorem lorem lorem lorem lorem"),
-  //   Item(
-  //       name: "third item",
-  //       price: 30000,
-  //       amount: 30,
-  //       description: "lorem lorem lorem lorem lorem"),
-  // ];
+  Item({
+    required this.model,
+    required this.pk,
+    required this.fields,
+  });
 
-  static List<Item> list = [];
-  int? id;
+  factory Item.fromJson(Map<String, dynamic> json) => Item(
+        model: json["model"],
+        pk: json["pk"],
+        fields: Fields.fromJson(json["fields"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "model": model,
+        "pk": pk,
+        "fields": fields.toJson(),
+      };
+}
+
+class Fields {
+  int user;
   String name;
-  int price;
   int amount;
   String description;
-  String dateAdded = DateFormat('dd/MM/yyyy').format(DateTime.now());
+  int price;
+  DateTime dateAdded;
 
-  @override
-  String toString() {
-    String output = "";
-    output += "$id. $name\n";
-    output += "Harga: $price\n";
-    output += "Jumlah: $amount\n";
-    output += "Deskripsi: $description\n";
-    output += dateAdded;
-    return output;
-  }
+  Fields({
+    required this.user,
+    required this.name,
+    required this.amount,
+    required this.description,
+    required this.price,
+    required this.dateAdded,
+  });
+
+  factory Fields.fromJson(Map<String, dynamic> json) => Fields(
+        user: json["user"],
+        name: json["name"],
+        amount: json["amount"],
+        description: json["description"],
+        price: json["price"],
+        dateAdded: DateTime.parse(json["date_added"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "user": user,
+        "name": name,
+        "amount": amount,
+        "description": description,
+        "price": price,
+        "date_added":
+            "${dateAdded.year.toString().padLeft(4, '0')}-${dateAdded.month.toString().padLeft(2, '0')}-${dateAdded.day.toString().padLeft(2, '0')}",
+      };
 }

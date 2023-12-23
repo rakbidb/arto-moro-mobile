@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../widgets/left_drawer.dart';
 import '../widgets/item_card.dart';
-import '../models/item.dart';
+import '../models/item_tugas_8.dart';
 
 class ShopListPage extends StatelessWidget {
   const ShopListPage({super.key});
@@ -9,9 +9,9 @@ class ShopListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Arto Moro'),
+        title: const Text('Lihat Item (Tugas 8)'),
         backgroundColor: Colors.grey[800],
         foregroundColor: Colors.white,
       ),
@@ -32,8 +32,7 @@ class ShopListPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                 ),
               ),

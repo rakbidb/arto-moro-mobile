@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import '../widgets/left_drawer.dart';
-import '../models/item.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
+import 'package:arto_moro/screens/menu.dart';
+import 'package:arto_moro/widgets/left_drawer.dart';
 
 class ShopFormPage extends StatefulWidget {
   const ShopFormPage({super.key});
@@ -18,10 +22,12 @@ class _ShopFormPageState extends State<ShopFormPage> {
 
   @override
   Widget build(BuildContext context) {
+    final request = context.watch<CookieRequest>();
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Form Tambah Produk'),
+        title: const Text('Tambah Item'),
         backgroundColor: Colors.grey[800],
         foregroundColor: Colors.white,
       ),
@@ -42,8 +48,8 @@ class _ShopFormPageState extends State<ShopFormPage> {
                         decoration: InputDecoration(
                           labelStyle: const TextStyle(
                               color: Color.fromRGBO(189, 189, 189, 1)),
-                          hintText: "Nama Produk",
-                          labelText: "Nama Produk",
+                          hintText: "Nama Item",
+                          labelText: "Nama Item",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           ),
@@ -68,8 +74,8 @@ class _ShopFormPageState extends State<ShopFormPage> {
                         decoration: InputDecoration(
                           labelStyle: const TextStyle(
                               color: Color.fromRGBO(189, 189, 189, 1)),
-                          hintText: "Harga Produk",
-                          labelText: "Harga Produk",
+                          hintText: "Harga Item",
+                          labelText: "Harga Item",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           ),
@@ -97,8 +103,8 @@ class _ShopFormPageState extends State<ShopFormPage> {
                         decoration: InputDecoration(
                           labelStyle: const TextStyle(
                               color: Color.fromRGBO(189, 189, 189, 1)),
-                          hintText: "Jumlah Produk",
-                          labelText: "Jumlah Produk",
+                          hintText: "Jumlah Item",
+                          labelText: "Jumlah Item",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           ),
@@ -127,8 +133,8 @@ class _ShopFormPageState extends State<ShopFormPage> {
                         decoration: InputDecoration(
                           labelStyle: const TextStyle(
                               color: Color.fromRGBO(189, 189, 189, 1)),
-                          hintText: "Deskripsi Produk",
-                          labelText: "Deskripsi Produk",
+                          hintText: "Deskripsi Item",
+                          labelText: "Deskripsi Item",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5.0),
                           ),
@@ -155,48 +161,37 @@ class _ShopFormPageState extends State<ShopFormPage> {
                             backgroundColor:
                                 MaterialStateProperty.all(Colors.grey[800]),
                           ),
-                          onPressed: () {
+                          onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              // Jika input sesuai ketentuan
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  Item item = Item(
-                                      name: _name,
-                                      price: _price,
-                                      amount: _amount,
-                                      description: _description);
-                                  Item.list.add(item);
-                                  return AlertDialog(
-                                    backgroundColor: Colors.grey[400],
-                                    title:
-                                        const Text('Produk Berhasil Tersimpan'),
-                                    content: SingleChildScrollView(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text('Nama: ${item.name}'),
-                                          Text('Harga: ${item.price}'),
-                                          Text('Jumlah: ${item.amount}'),
-                                          Text(
-                                              'Deskripsi: ${item.description}'),
-                                          Text('Tanggal: ${item.dateAdded}'),
-                                        ],
-                                      ),
-                                    ),
-                                    actions: [
-                                      TextButton(
-                                        child: const Text('OK'),
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                              _formKey.currentState!.reset();
+                              // Kirim ke Django dan tunggu respons
+                              // TODO: Ganti URL dan jangan lupa tambahkan trailing slash (/) di akhir URL!
+                              final response = await request.postJson(
+                                  "https://ravie-hasan-tugas.pbp.cs.ui.ac.id/create-flutter/",
+                                  // "http://localhost:8000/create-flutter/",
+                                  jsonEncode(<String, String>{
+                                    'name': _name,
+                                    'price': _price.toString(),
+                                    'description': _description,
+                                    'amount': _amount.toString(),
+                                  }));
+                              if (response['status'] == 'success') {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content:
+                                      Text("Produk baru berhasil disimpan!"),
+                                ));
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MyHomePage()),
+                                );
+                              } else {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(const SnackBar(
+                                  content: Text(
+                                      "Terdapat kesalahan, silakan coba lagi."),
+                                ));
+                              }
                             }
                           },
                           child: const Text(

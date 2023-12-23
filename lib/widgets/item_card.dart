@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/item.dart';
+import '../models/item_tugas_8.dart';
 
 class ItemCard extends StatelessWidget {
   final Item item;
