@@ -20,7 +20,7 @@ class _ItemPageState extends State<ItemPage> {
     final request = context.watch<CookieRequest>();
     Future<List<Item>> response = request
         // .postJson("http://localhost:8000/user-json/",
-        .postJson("https://artomoroweb.35.209.250.177.sslip.io/user-json",
+        .postJson("https://rakha-abid-tugas.pbp.cs.ui.ac.id/user-json",
             jsonEncode(<String, String>{"Content-Type": "application/json"}))
         .then((value) {
       if (value == null) {

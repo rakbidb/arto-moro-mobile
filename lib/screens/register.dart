@@ -107,7 +107,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     _passwordConfirmationController.text;
 
                 final response = await request.postJson(
-                  "https://artomoroweb.35.209.250.177.sslip.io/auth/register/",
+                  "https://rakha-abid-tugas.pbp.cs.ui.ac.id/auth/register/",
                   // "http://localhost:8000/auth/register/",
                   jsonEncode(<String, String>{
                     'username': username,
