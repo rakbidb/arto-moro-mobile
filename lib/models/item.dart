@@ -4,69 +4,70 @@
 
 import 'dart:convert';
 
-List<Item> itemFromJson(String str) =>
-    List<Item>.from(json.decode(str).map((x) => Item.fromJson(x)));
+List<Item> itemFromJson(String str) => List<Item>.from(json.decode(str).map((x) => Item.fromJson(x)));
 
-String itemToJson(List<Item> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String itemToJson(List<Item> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Item {
-  String model;
-  int pk;
-  Fields fields;
+    String model;
+    int pk;
+    Fields fields;
 
-  Item({
-    required this.model,
-    required this.pk,
-    required this.fields,
-  });
+    Item({
+        required this.model,
+        required this.pk,
+        required this.fields,
+    });
 
-  factory Item.fromJson(Map<String, dynamic> json) => Item(
+    factory Item.fromJson(Map<String, dynamic> json) => Item(
         model: json["model"],
         pk: json["pk"],
         fields: Fields.fromJson(json["fields"]),
-      );
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "model": model,
         "pk": pk,
         "fields": fields.toJson(),
-      };
+    };
 }
 
 class Fields {
-  int user;
-  String name;
-  int amount;
-  String description;
-  int price;
-  DateTime dateAdded;
+    int user;
+    String name;
+    DateTime dateAdded;
+    int price;
+    String description;
+    int amount;
+    String category;
 
-  Fields({
-    required this.user,
-    required this.name,
-    required this.amount,
-    required this.description,
-    required this.price,
-    required this.dateAdded,
-  });
+    Fields({
+        required this.user,
+        required this.name,
+        required this.dateAdded,
+        required this.price,
+        required this.description,
+        required this.amount,
+        required this.category,
+    });
 
-  factory Fields.fromJson(Map<String, dynamic> json) => Fields(
+    factory Fields.fromJson(Map<String, dynamic> json) => Fields(
         user: json["user"],
         name: json["name"],
-        amount: json["amount"],
-        description: json["description"],
-        price: json["price"],
         dateAdded: DateTime.parse(json["date_added"]),
-      );
+        price: json["price"],
+        description: json["description"],
+        amount: json["amount"],
+        category: json["category"],
+    );
 
-  Map<String, dynamic> toJson() => {
+    Map<String, dynamic> toJson() => {
         "user": user,
         "name": name,
-        "amount": amount,
-        "description": description,
+        "date_added": "${dateAdded.year.toString().padLeft(4, '0')}-${dateAdded.month.toString().padLeft(2, '0')}-${dateAdded.day.toString().padLeft(2, '0')}",
         "price": price,
-        "date_added":
-            "${dateAdded.year.toString().padLeft(4, '0')}-${dateAdded.month.toString().padLeft(2, '0')}-${dateAdded.day.toString().padLeft(2, '0')}",
-      };
+        "description": description,
+        "amount": amount,
+        "category": category,
+    };
 }

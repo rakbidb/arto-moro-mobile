@@ -6,9 +6,9 @@ class MyHomePage extends StatelessWidget {
   MyHomePage({super.key}); // Constructor
 
   final List<ShopItem> items = [
-    ShopItem("Lihat Produk (Tugas 8)", Icons.checklist, Colors.grey.shade900),
-    ShopItem("Daftar Produk", Icons.checklist, Colors.grey.shade800),
-    ShopItem("Tambah Produk", Icons.add_shopping_cart, Colors.grey.shade600),
+    ShopItem("Lihat Item (Tugas 8)", Icons.checklist, Colors.grey.shade900),
+    ShopItem("Daftar Item", Icons.checklist, Colors.grey.shade800),
+    ShopItem("Tambah Item", Icons.add_shopping_cart, Colors.grey.shade600),
     ShopItem("Logout", Icons.logout, const Color.fromRGBO(128, 34, 27, 1)),
   ];
 

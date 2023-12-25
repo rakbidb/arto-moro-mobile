@@ -63,7 +63,7 @@ class LeftDrawer extends StatelessWidget {
               color: Colors.white,
             ),
             title: const Text(
-              'Lihat Produk',
+              'Lihat Item',
               style: TextStyle(color: Colors.white),
             ),
             // Bagian redirection ke ShopListPage
@@ -81,7 +81,7 @@ class LeftDrawer extends StatelessWidget {
               color: Colors.white,
             ),
             title: const Text(
-              'Tambah Produk',
+              'Tambah Item',
               style: TextStyle(color: Colors.white),
             ),
             // Bagian redirection ke ShopFormPage

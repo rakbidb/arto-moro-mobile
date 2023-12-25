@@ -244,3 +244,75 @@
   - `Navigator.push()` akan mengarahkan ke `ShopListPage()` pada file `shoplist_page.dart` untuk menjalankan build
 
 <hr>
+
+# Jawaban Tugas 9
+<hr>
+
+## 1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+
+_Technically_ bisa-bisa saja. Akan tetapi, tidak lebih baik dibandingkan membuat model sebelum melakukan pengambilan data JSON. Jika kita membuat model dulu, akan lebih terstruktur karena _object oriented_. Kode juga akan menjadi lebih mudah untuk diperbaiki jika terdapat error. Tak hanya itu, dengan memanfaakan model. kita juga bisa memastikan tipe data untuk setiap atribut pada dari awal, sedangkan jika tanpa menggunakan model bisa saja terdapat kekeliruan saat memindah-mindahkan data. Selain itu, kita tahu bahwa _class_ dapat memiliki atribut tersendiri, sehingga terenkapsulasi dan dapat kita gunakan berkali-kali method tersebut dengan mudah.
+
+## 2. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa _instance_ CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+
+Fungsi CookieRequest adalah untuk _handle_ _cookies_ dan _session_ suatu pengguna. Dengan demikian, CookieRequest dapat digunakan untuk mengelola autentikasi dan otorisasi pengguna. CookieRequest perlu dibagikan ke semua komponen di aplikasi Flutter untuk memastikan _cookies_ dan _session_ selalu konsisten pada setiap aplikasi Flutter. Jika tidak dibagikan, bisa saja terdapat kontradiksi (misal: sesi pengguna dianggap telah berakhir di aplikasi A, tetapi masih valid di aplikasi B). Maka dari itu, jika terdapat perubahan pada suatu komponen atau aplikasi, maka di komponen atau aplikasi perlu diubah juga untuk memastikan sesuai.
+
+## 3. Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.
+
+- Mengambil data JSON, contohnya dapat menggunakan .postJson yang dapat diakses dengan melakukan `import 'package:pbp_django_auth/pbp_django_auth.dart';`
+- Perlu melakukan _decode_ data JSON, yaitu _parse_ JSON _string_ menjadi JSON _object_ agar dapat mengakses data tersebut sebagai suatu _object_ (tentunya perlu membuat `models` terlebih dahulu).
+- Dapat memanfaatkan `Future` dan `future:` serta `AsyncSnapshot snapshot` untuk menampilkan data kepada pengguna di aplikasi Flutter.
+
+## 4. Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+
+- `main.dart` membuka LoginPage.
+- Pada `LoginPage`, pengguna diminta untuk memberikan input username dan password.
+- Melakukan pemanggilan fungsi login pada aplikasi `authentication` di Django _project_.
+- Jika input sesuai, maka set cookie dan redirect ke HomePage (ada pada file `menu.dart`).
+- Jika input tidak sesuai, tetap di LoginPage dan pengguna dapat memberikan input lain.
+
+## 5. Sebutkan seluruh _widget_ yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.
+
+- `AppBar` => Seperti Navbar (pada bagian atas aplikasi).
+- `Container` => Biasanya menampung beberapa widget. Dapat digunakan untuk kustomisasi seperti background color, margin, padding, etc.
+- `Center` => Untuk memindahkan widget ke tengah.
+- `Scaffold` => Untuk struktur dasar aplikasi Flutter (bersifat material design).
+- `Column` => Menyusun childrennya pada 1 column yang sama (vertically). Dapat digunakan untuk menata letak widget jika ingin ditempatkan pada 1 column yang sama.
+- `Material` => Untuk desain visual dan perilaku interaksi untuk aplikasi Flutter.
+- `Text` => Untuk menampilkan teks pada page.
+- `Padding` => Untuk mengatur jarak (padding) di sekitar widget childnya.
+- `TextStyle` => Untuk kustomisasi teks pada page (color, size, etc.).
+- `ElevatedButton` => Untuk efek peninggian dan memberikan respon ketika diklik.
+- `ButtonStyle` => Untuk menentukan style button.
+- `FutureBuilder` => Untuk mengelola status objek (uncompleted, completed, dan error).
+- `ListView` => Menyusun childrennya Dapat digunakan untuk menampilkan list daftar item.
+- `SizedBox` => Pada tugas ini digunakan untuk semacam margin.
+- `InputDecoration` => Untuk mengatur dekorasi elemen input seperti label, icon, dan text style.
+- `TextField` => Untuk membuat input teks yang dapat diubah oleh pengguna.
+
+## 6. Jelaskan bagaimana cara kamu mengimplementasikan _checklist_ di atas secara _step-by-step_! (bukan hanya sekadar mengikuti tutorial).
+
+- [ ] Memastikan _deployment_ proyek tugas Django kamu telah berjalan dengan baik.
+  - Menambahkan new line pada _project_ Django kemudian melakukan add, commit, push.
+- [ ] Membuat halaman login pada proyek tugas Flutter.
+  - Membuat file baru `login.dart`.
+  - Menjadikan halaman login sebagia halaman yang pertama muncul (diubah pada `main.dart`).
+- [ ] Mengintegrasikan sistem autentikasi Django dengan proyek tugas Flutter.
+  - Install `django-cors-headers` pada Django _project_.
+  - Membuat app baru `authentication` pada Django _project_.
+  - Menambahkan `urls.py` dan `views.py` pada app `authentication` untuk diintegrasikan dengan Flutter.
+  - Saat mengakses data, mengakses dari url yang telah tersedia pada `urls.py`di Django _project_ akan tersinkronisasi.
+- [ ] Membuat model kustom sesuai dengan proyek aplikasi Django.
+  - Membuat file `item.dart` yang akan menyimpan model kustom `Item`.
+  - Memanfaatkan QuickType untuk mengisi file `item.dart`.
+- [ ] Membuat halaman yang berisi daftar semua item yang terdapat pada _endpoint_ `JSON` di Django yang telah kamu _deploy_.
+  - [ ] Tampilkan _name_, _amount_, dan _description_ dari masing-masing item pada halaman ini.
+    - Memanfaatkan `AsyncSnapshot snapshot` untuk iterasi setiap item.
+    - Mengambil data semua item dari url Django _project_.
+- [ ] Membuat halaman detail untuk setiap item yang terdapat pada halaman daftar Item.
+  - [ ] Halaman ini dapat diakses dengan menekan salah satu item pada halaman daftar Item.
+    - Membuat `ElevatedButton` dengan teks `See Details` yang akan _redirect_ ke _detail page_ dari item yang bersangkutan.
+    - Halaman ini terdapat pada file `item_details_page.dart`.
+  - [ ] Tampilkan seluruh atribut pada model item kamu pada halaman ini.
+    - Memanfaatkan model `Item`, atribut dapat diakses dengan `item.fields.<attribute>`
+  - [ ] Tambahkan tombol untuk kembali ke halaman daftar item.
+    - Membuat `ElevatedButton` dengan teks `Back` untuk kembali ke page list item (memanfaatkan `Navigator.pop(context)`).
