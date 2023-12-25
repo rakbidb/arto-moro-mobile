@@ -90,8 +90,8 @@ class _LoginPageState extends State<LoginPage> {
 
                 // Cek kredensial
                 final response = await request.login(
-                    "https://rakha-abid-tugas.pbp.cs.ui.ac.id/auth/login/", {
-                    // "http://localhost:8000/auth/login/", {
+                    // "https://rakha-abid-tugas.pbp.cs.ui.ac.id/auth/login/", {
+                    "http://localhost:8000/auth/login/", {
                   'username': username,
                   'password': password,
                 });

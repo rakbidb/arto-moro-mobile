@@ -107,8 +107,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     _passwordConfirmationController.text;
 
                 final response = await request.postJson(
-                  "https://rakha-abid-tugas.pbp.cs.ui.ac.id/auth/register/",
-                  // "http://localhost:8000/auth/register/",
+                  // "https://rakha-abid-tugas.pbp.cs.ui.ac.id/auth/register/",
+                  "http://localhost:8000/auth/register/",
                   jsonEncode(<String, String>{
                     'username': username,
                     'password': password,
